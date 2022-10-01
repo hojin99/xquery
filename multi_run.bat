@@ -1,0 +1,10 @@
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books1.xml ./resource/test.xqy ./resource/result1.csv
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books2.xml ./resource/test.xqy ./resource/result2.csv
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books3.xml ./resource/test.xqy ./resource/result3.csv
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books4.xml ./resource/test.xqy ./resource/result4.csv
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books5.xml ./resource/test.xqy ./resource/result5.csv
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books6.xml ./resource/test.xqy ./resource/result6.csv
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books7.xml ./resource/test.xqy ./resource/result7.csv
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books8.xml ./resource/test.xqy ./resource/result8.csv
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books9.xml ./resource/test.xqy ./resource/result9.csv
+java -jar ./target/xml_to_csv_parser-1.0-SNAPSHOT.jar ./books10.xml ./resource/test.xqy ./resource/result10.csv
