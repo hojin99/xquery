@@ -10,7 +10,7 @@ public class JobManager {
     /**
      * 작업관리자에 작업 지시
      *
-     * @param args
+     * @param args 1개일 경우 작업내역파일, 2개 이상일 경우 파일명..., Xquery파일명, 결과파일명
      * @throws Exception
      */
     public void run(String[] args) throws Exception {
@@ -22,7 +22,7 @@ public class JobManager {
             // 멀티 작업(csv파일의 작업목록 읽기)
             File csv = new File(args[0]);
             BufferedReader br = null;
-            String line = "";
+            String line;
 
             try {
                 br = new BufferedReader(new FileReader(csv));
@@ -53,7 +53,7 @@ public class JobManager {
 
         for(HashMap<String,Object> job : jobList) {
             System.out.println("job cnt : " + ++cnt);
-            System.out.println("result fle : " + (String)job.get("result"));
+            System.out.println("result fle : " + job.get("result"));
 
             parser.runApp((String[])job.get("xml"), (String)job.get("xquery"), (String)job.get("result"));
         }
@@ -62,17 +62,15 @@ public class JobManager {
     /**
      * 작업목록에 작업 추가
      *
-     * @param jobList
-     * @param args
+     * @param jobList 작업목록
+     * @param args 파일명..., Xquery파일명, 결과파일명
      */
     private void addJob(ArrayList<HashMap<String,Object>> jobList, String[] args) {
 
-        HashMap<String, Object> job = new HashMap<String, Object>();
+        HashMap<String, Object> job = new HashMap<>();
 
         String[] files = new String[args.length - 2];
-        for (int i = 0; i < args.length - 2; ++i) {
-            files[i] = args[i];
-        }
+        System.arraycopy(args, 0, files, 0, args.length - 2);
 
         job.put("xquery", args[args.length - 2]);
         job.put("result", args[args.length - 1]);

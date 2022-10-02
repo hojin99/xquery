@@ -1,18 +1,18 @@
 import net.sf.saxon.s9api.*;
-import net.sf.saxon.trans.XPathException;
 import java.io.*;
+import java.nio.file.Files;
 
 public class SaxonRunner {
 
     private Processor processor;
 //    private String encoding = "MS949";
-    private String encoding = "UTF-8";
+    private final String encoding = "UTF-8";
 
-    public SaxonRunner() throws XPathException {
+    public SaxonRunner() {
         setUpProcessor();
     }
 
-    private void setUpProcessor() throws XPathException {
+    private void setUpProcessor() {
         processor = new Processor(false);
     }
 
@@ -23,7 +23,7 @@ public class SaxonRunner {
         compiler.setUpdatingEnabled(false);
         compiler.setEncoding("UTF-8");
 //        compiler.setBaseURI(new File(System.getProperty("user.dir")).toURI());
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(resultFile)), encoding));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(Files.newOutputStream(new File(resultFile).toPath()), encoding));
         Serializer serializer = processor.newSerializer(bw);
         serializer.setOutputProperty(Serializer.Property.METHOD, "xml");
         serializer.setOutputProperty(Serializer.Property.ENCODING, encoding);
