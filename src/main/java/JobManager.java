@@ -55,7 +55,13 @@ public class JobManager {
             System.out.println("job cnt : " + ++cnt);
             System.out.println("result fle : " + job.get("result"));
 
-            parser.runApp((String[])job.get("xml"), (String)job.get("xquery"), (String)job.get("result"));
+            try {
+                // 단일 파일이 에러가 나더라도 진행 되도록 함
+                parser.runApp((String[]) job.get("xml"), (String) job.get("xquery"), (String) job.get("result"));
+                System.out.println(job.get("result") + " completed!!");
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
